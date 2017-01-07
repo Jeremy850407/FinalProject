@@ -94,8 +94,9 @@ class AccountTableViewController: UITableViewController {
         let dic = account[indexPath.row]
         // Configure the cell...
         
+        cell.dateLabel.text = dic["date"]
         cell.nameLabel.text = dic["name"]
-        cell.moneyLabel.text = dic["money"]
+        cell.moneyLabel.text = "$" + dic["money"]!
         //cell.nameLabel.text = dic["name"]
         //cell.starImageView.image = UIImage(named: dic["star"]!)
         

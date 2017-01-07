@@ -16,7 +16,8 @@ class AddAccountTableViewController: UITableViewController , UINavigationControl
     @IBOutlet weak var dateTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -26,20 +27,46 @@ class AddAccountTableViewController: UITableViewController , UINavigationControl
 
     var datePicker : UIDatePicker!
     @IBAction func dateTextFieldEdit(_ sender: UITextField) {
+        self.datePicker = UIDatePicker(frame:CGRect(x:0,y:0,width:self.view.frame.size.width,height:216))
+        self.datePicker.backgroundColor = UIColor.white
+        //self.datePicker.datePickerMode = UIDatePickerMode.date
+        //textField.inputView = self.datePicker
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor.black
+        toolBar.sizeToFit()
+        
+        // Adding Button ToolBar
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.doneClick))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancelClick))
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        sender.inputAccessoryView = toolBar
         
         
         
-            let datePickerView:UIDatePicker = UIDatePicker()
+        let datePickerView:UIDatePicker = UIDatePicker()
             
-            datePickerView.datePickerMode = UIDatePickerMode.date
+        datePickerView.datePickerMode = UIDatePickerMode.date
             
-            sender.inputView = datePickerView
+        sender.inputView = datePickerView
             
-            datePickerView.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: .valueChanged)
+        datePickerView.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: .valueChanged)
     }
     
-    
-    
+    func doneClick() {
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateStyle = .medium
+        dateFormatter1.timeStyle = .none
+        dateFormatter1.dateFormat = "yyyy/MM/dd"
+        dateTextField.text = dateFormatter1.string(for: datePicker.date)
+        dateTextField.resignFirstResponder()
+    }
+    func cancelClick() {
+        dateTextField.resignFirstResponder()
+    }
     func datePickerValueChanged(sender:UIDatePicker) {
         
         let dateFormatter = DateFormatter()
@@ -47,7 +74,7 @@ class AddAccountTableViewController: UITableViewController , UINavigationControl
         dateFormatter.dateStyle = .medium
         
         dateFormatter.timeStyle = .none
-        
+        dateFormatter.dateFormat = "MMMM dd yyyy"
         dateTextField.text = dateFormatter.string(from: sender.date)
         
     }
@@ -81,6 +108,19 @@ class AddAccountTableViewController: UITableViewController , UINavigationControl
             
             return
         }
+        if (Int(moneyTextField.text!) == nil) {
+            
+            let controller = UIAlertController(title: "錯誤", message: "請輸入數字", preferredStyle: .alert)
+            moneyTextField.text! = ""
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            controller.addAction(action)
+            
+            
+            present(controller, animated: true, completion: nil)
+            
+            
+            return
+        }
         if dateTextField.text!.characters.count == 0 {
             
             let controller = UIAlertController(title: "錯誤", message: "時間尚未填寫", preferredStyle: .alert)
@@ -94,21 +134,6 @@ class AddAccountTableViewController: UITableViewController , UINavigationControl
             
             return
         }
-        
-        //let image = selectPhotoBut.backgroundImage(for: .normal)
-        
-        
-        //let data = UIImagePNGRepresentation(image!)
-        
-        //let fileManager = FileManager.default
-        //let docUrls =
-        //    fileManager.urls(for: .documentDirectory, in: .userDomainMask)
-        //let docUrl = docUrls.first
-        //let url = docUrl?.appendingPathComponent("\(nameTextField.text!).png")
-        
-        
-        //try? data?.write(to: url!)
-        
         
         
         let dic = ["name":nameTextField.text!,
