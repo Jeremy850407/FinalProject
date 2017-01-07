@@ -84,7 +84,7 @@ class AddAccountTableViewController: UITableViewController , UINavigationControl
     }
     
     @IBAction func done(_ sender: Any) {
-        print("\(nameTextField.text!) \(moneyTextField.text!) \(commentTextView.text!)")
+        //print("\(nameTextField.text!) \(moneyTextField.text!) \(commentTextView.text!)")
         
         if nameTextField.text!.characters.count  == 0 {
             

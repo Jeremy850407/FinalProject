@@ -31,7 +31,7 @@ class AccountTableViewController: UITableViewController {
         let docUrl = docUrls.first
         let url = docUrl?.appendingPathComponent("account.txt")
         let result = (account as NSArray).write(to: url!, atomically: true)
-        print("result \(result)")
+        //print("result \(result)")
     }
     
     func addAccountNoti(noti:Notification) {

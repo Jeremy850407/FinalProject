@@ -45,12 +45,6 @@ class ViewController: UIViewController {
         if array != nil{
             account = array as! [[String:String]]
         }
-        else{
-            topdateLabel.text = "n/a"
-            topNameLabel.text = "n/a"
-            topMoneyLabel.text = "n/a"
-            index = -1
-        }
         for name in account{
             //print("\(name["name"])")
             //print("\(name["money"])")
@@ -68,11 +62,16 @@ class ViewController: UIViewController {
         }
         infoLabel.text! = String(totalSpend) + "元"
         averageSpend.text! = String(round(Double(totalSpend)/Double(count) * 100) / 100) + "元"
-        if index != -1{
+        if count != 0{
             bigSpend = account[index]
             topdateLabel.text = bigSpend["date"]!
             topNameLabel.text = bigSpend["name"]!
             topMoneyLabel.text = bigSpend["money"]! + "元"
+        }else{
+            topdateLabel.text = "n/a"
+            topNameLabel.text = "n/a"
+            topMoneyLabel.text = "n/a"
+            averageSpend.text! = "0元"
         }
         // Do any additional setup after loading the view, typically from a nib.
     }
