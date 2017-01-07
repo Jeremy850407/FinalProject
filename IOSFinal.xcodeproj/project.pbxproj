@@ -14,8 +14,8 @@
 		408D8E4D1E20B19B00BA1775 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 408D8E4B1E20B19B00BA1775 /* LaunchScreen.storyboard */; };
 		408D8E551E20B61B00BA1775 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408D8E541E20B61B00BA1775 /* AccountTableViewController.swift */; };
 		408D8E571E20B69F00BA1775 /* AddAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408D8E561E20B69F00BA1775 /* AddAccountTableViewController.swift */; };
-		408D8E591E20B6B200BA1775 /* AccountDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408D8E581E20B6B200BA1775 /* AccountDetailTableViewController.swift */; };
 		408D8E5B1E20B6C700BA1775 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408D8E5A1E20B6C700BA1775 /* AccountTableViewCell.swift */; };
+		409332681E20E26A0043F814 /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409332671E20E26A0043F814 /* AccountDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +28,8 @@
 		408D8E4E1E20B19B00BA1775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		408D8E541E20B61B00BA1775 /* AccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
 		408D8E561E20B69F00BA1775 /* AddAccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAccountTableViewController.swift; sourceTree = "<group>"; };
-		408D8E581E20B6B200BA1775 /* AccountDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailTableViewController.swift; sourceTree = "<group>"; };
 		408D8E5A1E20B6C700BA1775 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		409332671E20E26A0043F814 /* AccountDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +46,7 @@
 		408D8E361E20B19900BA1775 = {
 			isa = PBXGroup;
 			children = (
+				409332671E20E26A0043F814 /* AccountDetailViewController.swift */,
 				408D8E411E20B19B00BA1775 /* IOSFinal */,
 				408D8E401E20B19B00BA1775 /* Products */,
 			);
@@ -66,7 +67,6 @@
 				408D8E441E20B19B00BA1775 /* ViewController.swift */,
 				408D8E461E20B19B00BA1775 /* Main.storyboard */,
 				408D8E561E20B69F00BA1775 /* AddAccountTableViewController.swift */,
-				408D8E581E20B6B200BA1775 /* AccountDetailTableViewController.swift */,
 				408D8E5A1E20B6C700BA1775 /* AccountTableViewCell.swift */,
 				408D8E541E20B61B00BA1775 /* AccountTableViewController.swift */,
 				408D8E491E20B19B00BA1775 /* Assets.xcassets */,
@@ -108,6 +108,7 @@
 				TargetAttributes = {
 					408D8E3E1E20B19A00BA1775 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -151,9 +152,9 @@
 				408D8E451E20B19B00BA1775 /* ViewController.swift in Sources */,
 				408D8E431E20B19B00BA1775 /* AppDelegate.swift in Sources */,
 				408D8E551E20B61B00BA1775 /* AccountTableViewController.swift in Sources */,
+				409332681E20E26A0043F814 /* AccountDetailViewController.swift in Sources */,
 				408D8E5B1E20B6C700BA1775 /* AccountTableViewCell.swift in Sources */,
 				408D8E571E20B69F00BA1775 /* AddAccountTableViewController.swift in Sources */,
-				408D8E591E20B6B200BA1775 /* AccountDetailTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +316,7 @@
 				408D8E531E20B19B00BA1775 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

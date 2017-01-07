@@ -8,8 +8,12 @@
 
 import UIKit
 
-class AddAccountTableViewController: UITableViewController {
+class AddAccountTableViewController: UITableViewController , UINavigationControllerDelegate {
 
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var moneyTextField: UITextField!
+    @IBOutlet weak var commentTextView: UITextView!
+    @IBOutlet weak var dateTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,13 +24,113 @@ class AddAccountTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    var datePicker : UIDatePicker!
+    @IBAction func dateTextFieldEdit(_ sender: UITextField) {
+        
+        
+        
+            let datePickerView:UIDatePicker = UIDatePicker()
+            
+            datePickerView.datePickerMode = UIDatePickerMode.date
+            
+            sender.inputView = datePickerView
+            
+            datePickerView.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: .valueChanged)
+    }
+    
+    
+    
+    func datePickerValueChanged(sender:UIDatePicker) {
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = .medium
+        
+        dateFormatter.timeStyle = .none
+        
+        dateTextField.text = dateFormatter.string(from: sender.date)
+        
+    }
+    
+    @IBAction func done(_ sender: Any) {
+        print("\(nameTextField.text!) \(moneyTextField.text!) \(commentTextView.text!)")
+        
+        if nameTextField.text!.characters.count  == 0 {
+            
+            let controller = UIAlertController(title: "錯誤", message: "名稱尚未填寫", preferredStyle: .alert)
+            
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            controller.addAction(action)
+            
+            
+            present(controller, animated: true, completion: nil)
+            
+            
+            return
+        }
+        if moneyTextField.text!.characters.count == 0 {
+            
+            let controller = UIAlertController(title: "錯誤", message: "金額尚未填寫", preferredStyle: .alert)
+            
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            controller.addAction(action)
+            
+            
+            present(controller, animated: true, completion: nil)
+            
+            
+            return
+        }
+        if dateTextField.text!.characters.count == 0 {
+            
+            let controller = UIAlertController(title: "錯誤", message: "時間尚未填寫", preferredStyle: .alert)
+            
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            controller.addAction(action)
+            
+            
+            present(controller, animated: true, completion: nil)
+            
+            
+            return
+        }
+        
+        //let image = selectPhotoBut.backgroundImage(for: .normal)
+        
+        
+        //let data = UIImagePNGRepresentation(image!)
+        
+        //let fileManager = FileManager.default
+        //let docUrls =
+        //    fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+        //let docUrl = docUrls.first
+        //let url = docUrl?.appendingPathComponent("\(nameTextField.text!).png")
+        
+        
+        //try? data?.write(to: url!)
+        
+        
+        
+        let dic = ["name":nameTextField.text!,
+                   "money":moneyTextField.text!,
+                   "date":dateTextField.text!,
+                   "comment":commentTextView.text!]
+        
+        
+        
+        let notiName = Notification.Name("addAccount")
+        NotificationCenter.default.post(name: notiName, object: nil, userInfo: dic)
+        
+        self.navigationController?.popViewController(animated: true)
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
-
+    /*
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
@@ -36,7 +140,7 @@ class AddAccountTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
-
+    */
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
