@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddAccountTableViewController: UITableViewController , UINavigationControllerDelegate {
+class AddAccountTableViewController: UITableViewController , UINavigationControllerDelegate, UITextFieldDelegate , UITextViewDelegate{
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var moneyTextField: UITextField!
@@ -16,8 +16,12 @@ class AddAccountTableViewController: UITableViewController , UINavigationControl
     @IBOutlet weak var dateTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AddAccountTableViewController.dismissKeyboard))
         
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
         
+        view.addGestureRecognizer(tap)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -154,6 +158,20 @@ class AddAccountTableViewController: UITableViewController , UINavigationControl
         // Dispose of any resources that can be recreated.
     }
 
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        self.view.endEditing(true)
+        return true
+        
+    }
+    
+    
     // MARK: - Table view data source
     /*
     override func numberOfSections(in tableView: UITableView) -> Int {
